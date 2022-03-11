@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-import CartItem from '../CartItem'
+import CartItem from './CartItem'
 
 
 function Cart ({ cart }) {

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-import ProductsList from './components/ProductsList'
+import {CartNav, ProductsList} from './components/'
 import commerce from './lib/commerce';
 import './styles/scss/styles.scss'
 
@@ -41,6 +41,7 @@ function App() {
     <div className="app">
       <h1>E-Commerce</h1>
       <ProductsList products={products} onAddToCart={handleAddToCart} />
+      <CartNav cart={cart} />
     </div>
   );
 }
