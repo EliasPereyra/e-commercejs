@@ -1,23 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react';
+
+import ProductsList from './components/ProductsList'
+import commerce from './lib/commerce';
+import './styles/scss/styles.scss'
 
 function App() {
+  const [products, setProducts] = useState([])
+  const [cart, setCart] = useState({})
+
+  const fetchProducts = () => {
+    commerce.products.list().then((products) => {
+      setProducts(products.data)
+    }).catch((err) => {
+      console.error("Error!!", err)
+    })
+  }
+
+  const fetchCart = () => {
+    commerce.cart.retrieve().then((cart) => {
+      setCart(cart)
+    }).catch((err) => {
+      console.error("Error", err)
+    })
+  }
+
+  useEffect(() => {
+    fetchProducts()
+    fetchCart()
+  },[])
+
+  const handleAddToCart = (productId, quantity) => {
+    commerce.cart.add(productId, quantity).then((item) => {
+      setCart(item.cart)
+    }).catch((err) => {
+      console.error("There was an error adding the item to the cart", err)
+    })
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <h1>E-Commerce</h1>
+      <ProductsList products={products} onAddToCart={handleAddToCart} />
     </div>
   );
 }
