@@ -12,7 +12,7 @@ function Cart({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) {
       return;
     }
 
-    return <p>You have no items in your shopping cart, start adding some!</p>;
+    return <p className="cart__none">You have no items in your shopping cart, start adding some!</p>;
   };
 
   const renderItems = () => {};

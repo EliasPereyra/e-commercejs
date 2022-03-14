@@ -81,7 +81,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>E-Commerce</h1>
+      <h1>E-CommerceJS</h1>
       <ProductsList products={products} onAddToCart={handleAddToCart} />
       <CartNav
         cart={cart}

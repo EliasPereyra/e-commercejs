@@ -3,9 +3,9 @@ $font-primary: 'Amiko', sans-serif;
 $font-secondary: 'Adamina', serif;
 
 // Colors
-$bg-color: #E8E2D7;
+$bg-color: #e8e5ee;
 
-$text-primary: #292B83;
+$text-primary: #412983;
 $text-grey: rgb(67, 67, 67);
 
 $color-accent: #EF4E42;
@@ -15,3 +15,9 @@ $sm-width: 576px;
 $md-width: 768px;
 $lg-width: 992px;
 $xl-width: 1200px;
+
+h1 {
+  color: $text-primary;
+  font-weight: bold;
+  text-align: center;
+}
