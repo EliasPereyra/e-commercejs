@@ -1,54 +1,59 @@
-import PropTypes from 'prop-types'
+import PropTypes from "prop-types";
 
-import CartItem from './CartItem'
+import CartItem from "./CartItem";
 
-
-function Cart ({ cart }) {
+function Cart({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) {
   const handleEmptyCart = () => {
-    onEmptyCart()
-  }
+    onEmptyCart();
+  };
 
   const renderEmptyMessage = () => {
-    if (cart.total_unique_items > 1){
-      return
+    if (cart.total_unique_items > 0) {
+      return;
     }
 
-    return(
-      <p>You have no items in your shopping cart, start adding some!</p>
-    )
-  }
+    return <p>You have no items in your shopping cart, start adding some!</p>;
+  };
 
-  const renderItems = () => {
-    cart.line_items.map((lineItem) => (
-      <CartItem item={lineItem} key={lineItem.id} />
-    ))
-  }
+  const renderItems = () => {};
 
   const renderTotal = () => {
-    <div>
-      <p>Subtotal:</p>
-      <p>{cart.subtotalformatted_with_symbol}</p>  
-    </div>
-  }
-
+    return (
+      <div className="cart__total">
+        <p className="cart__total-title">Subtotal:</p>
+        <p className="cart__total-price">
+          {cart.subtotal.formatted_with_symbol}
+        </p>
+      </div>
+    );
+  };
+  console.log(renderItems);
   return (
     <div className="cart">
       <h4 className="cart__heading">Your shopping Cart</h4>
-      { renderEmptyMessage() }
-      { renderItems() }
-      { renderTotal() }
+      {renderEmptyMessage()}
+      {cart.line_items.map((lineItem) => (
+        <CartItem
+          item={lineItem}
+          key={lineItem.id}
+          className="cart__inner"
+          onUpdateCartQty={onUpdateCartQty}
+          onRemoveFromCart={onRemoveFromCart}
+        />
+      ))}
+      {renderTotal()}
       {/* Footer */}
       <div className="cart__footer">
-        <button className="cart__btn-empty">Empty Cart</button>
+        <button className="cart__btn-empty" onClick={() => handleEmptyCart()}>Empty Cart</button>
         <button className="cart__btn-checkout">Checkout</button>
       </div>
     </div>
-  )
+  );
 }
 
 Cart.propTypes = {
   cart: PropTypes.object,
   onEmptyCart: () => {},
-}
+};
 
-export default Cart
+export default Cart;
