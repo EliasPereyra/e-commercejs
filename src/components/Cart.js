@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import CartItem from "./CartItem";
 
@@ -45,7 +46,7 @@ function Cart({ cart, onUpdateCartQty, onRemoveFromCart, onEmptyCart }) {
       {/* Footer */}
       <div className="cart__footer">
         <button className="cart__btn-empty" onClick={() => handleEmptyCart()}>Empty Cart</button>
-        <button className="cart__btn-checkout">Checkout</button>
+        <Link className="cart__btn-checkout" to="/checkout">Checkout</Link>
       </div>
     </div>
   );

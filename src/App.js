@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 
-import { CartNav, ProductsList } from "./components/";
+import { CartNav, ProductsList, Hero } from "./components/";
 import commerce from "./lib/commerce";
+import Checkout from "./pages/Checkout";
 import "./styles/scss/styles.scss";
 
 function App() {
@@ -81,14 +83,24 @@ function App() {
 
   return (
     <div className="app">
-      <h1>E-CommerceJS</h1>
-      <ProductsList products={products} onAddToCart={handleAddToCart} />
-      <CartNav
-        cart={cart}
-        onUpdateCartQty={handleUpdateCartQty}
-        onRemoveFromCart={handleRemoveFromCart}
-        onEmptyCart={handleEmptyCart}
-      />
+      <Hero />
+      <Routes>
+        <Route
+          path="/"
+          index
+          element={
+            <>
+              <ProductsList products={products} onAddToCart={handleAddToCart} />
+              <CartNav
+                cart={cart}
+                onUpdateCartQty={handleUpdateCartQty}
+                onRemoveFromCart={handleRemoveFromCart}
+                onEmptyCart={handleEmptyCart}
+              />
+            </>
+          } />
+        <Route path="/checkout" element={<Checkout cart={cart} />} />
+      </Routes>
     </div>
   );
 }
