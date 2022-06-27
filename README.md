@@ -1,6 +1,6 @@
-# A Basic E-commerce 
+# A Basic E-commerce Project
 
-This project was made with React.js
+This project was made with **React.js** and with the headless backend called [Commerce.js](https://commercejs.com/)
 
 ## Available Scripts
 
