@@ -48,6 +48,7 @@
     align-self: flex-start;
     background-color: white;
     border: 2px solid $text-primary;
+    border-radius: 25px;
     padding-left: 1.25rem;
     padding: 0.5rem 0.75rem;
     margin: 0 1.25rem 1.25rem;
@@ -60,6 +61,7 @@
   &__btn-checkout {
     background-color: $text-primary;
     border: 2px solid $text-primary;
+    border-radius: 25px;
     padding-left: 1.25rem;
     padding: 0.5rem 0.75rem;
     margin: 0 1.25rem 1.25rem;

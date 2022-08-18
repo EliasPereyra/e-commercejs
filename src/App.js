@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import { CartNav, ProductsList, Hero } from "./components/";
 import commerce from "./lib/commerce";
 import Checkout from "./pages/Checkout";
-import "./styles/scss/styles.scss";
+import "./styles/scss/styles.scss"; 
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -91,7 +91,7 @@ function App() {
           element={
             <>
               <ProductsList products={products} onAddToCart={handleAddToCart} />
-              <CartNav
+              <CartNav  
                 cart={cart}
                 onUpdateCartQty={handleUpdateCartQty}
                 onRemoveFromCart={handleRemoveFromCart}

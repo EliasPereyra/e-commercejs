@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react'
-import { defaults } from 'string-strip-html'
 
 import commerce from '../lib/commerce'
 
@@ -22,12 +21,37 @@ function Checkout ({cart}) {
     expYear: "2023",
     ccv: "123",
     // shipping and fulfillment data
-    shippingCountries: {},
-    shippingOptions: {},
-    shippingOption: ""
   }
 
   const [checkoutToken, setCheckoutToken] = useState({})
+  const [shippingCountries, setShippingCountries] = useState({})
+  const [shippingSubDivisions, setShippingSubDivisions] = useState({})
+  const [shippingOption, setShippingOption] = useState("")
+  const [shippingOptions, setShippingOptions] = useState([])
+
+  const fetchShippingCountries = (checkoutTokenId) => {
+    commerce.services.localeListShippingCountries(checkoutTokenId).then((countries) => {
+      setShippingCountries({shippingCountries: countries.countries})
+    }).catch((err) => console.error("There was an error fetching a list of shipping countries", err))
+  }
+
+  const fetchSubDivisions = (countryCode) => {
+    commerce.services.localeListSubdivisions(countryCode).then((subdivisions) => {
+      setShippingSubDivisions({shippingSubDivisions: subdivisions.subdivisions})
+    }).catch((err) => console.error("There was an error fetching the subdivisions", err))
+  }
+
+  const fetchShippingOptions = (checkoutTokenId, country, stateOfProvince = null) => {
+    commerce.checkout.getShippingOptions(checkoutTokenId,
+      {
+        country: country,
+        region: stateOfProvince
+      }).then((options) => {
+        const shippingOption = options[0] || null
+        setShippingOption(shippingOption)
+        setShippingOptions(options)
+      }).catch((err) => console.error("There was an error fetching the shipping methods", err))
+  }
 
   const genereateCheckoutToken = () => {
     if (cart.line_items.length){
@@ -35,12 +59,19 @@ function Checkout ({cart}) {
         .then((token) => {
           setCheckoutToken(token)
         })
+        .then(() => {
+          fetchShippingCountries(checkoutToken.id)
+        })
         .catch((err) => console.error("There was an error generating a token", err)) 
     }
   }
 
   useEffect(() => {
     genereateCheckoutToken()
+  },[])
+
+  useEffect(() => {
+    fetchShippingCountries(checkoutToken.id, defaultState.shippingCountry)
   },[])
 
   const checkoutForm = () => {
