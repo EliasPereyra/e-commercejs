@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom'
+
 function Hero() {
-
-
   return (
     <div className="hero">
-      <h1>E-CommerceJS</h1>
-
+      <Link to="/">
+        <h1>E-CommerceJS</h1>
+      </Link>
     </div>
   )
 }

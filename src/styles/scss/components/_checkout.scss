@@ -13,14 +13,20 @@
   &__form {
     background-color: white;
     border: 2px solid $text-primary;
+    border-radius: 6px;
     width: 50%;
     padding: 1.5rem 2rem;
     margin: 3rem;
+    margin: auto;
     margin-top: 1.5rem;
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+    align-items: flex-start;
   }
 
   &__subheading {
-    font-size: 1.125rem;
+    font-size: 1.4rem;
     font-style: bold;
     color: $text-primary;
 
@@ -39,8 +45,9 @@
   }
 
   &__input {
-    border: 1px solid $text-primary;
-    padding: 0.25rem 0.5rem;
+    border: 1.5px solid $text-primary;
+    border-radius: 6px;
+    padding: 0.5rem 0.8rem;
     font-size: 0.875rem;
   }
 

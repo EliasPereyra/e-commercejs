@@ -1,8 +1,8 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
 import commerce from '../lib/commerce'
 
-function Checkout ({cart}) {
+function Checkout({ cart }) {
   const defaultState = {
     checkoutToken: {},
     firstName: "Jane",
@@ -31,13 +31,13 @@ function Checkout ({cart}) {
 
   const fetchShippingCountries = (checkoutTokenId) => {
     commerce.services.localeListShippingCountries(checkoutTokenId).then((countries) => {
-      setShippingCountries({shippingCountries: countries.countries})
+      setShippingCountries({ shippingCountries: countries.countries })
     }).catch((err) => console.error("There was an error fetching a list of shipping countries", err))
   }
 
   const fetchSubDivisions = (countryCode) => {
     commerce.services.localeListSubdivisions(countryCode).then((subdivisions) => {
-      setShippingSubDivisions({shippingSubDivisions: subdivisions.subdivisions})
+      setShippingSubDivisions({ shippingSubDivisions: subdivisions.subdivisions })
     }).catch((err) => console.error("There was an error fetching the subdivisions", err))
   }
 
@@ -54,79 +54,85 @@ function Checkout ({cart}) {
   }
 
   const genereateCheckoutToken = () => {
-    if (cart.line_items.length){
-      commerce.checkout.generateToken(cart.id, {type: 'cart'})
+    if (cart.line_items.length) {
+      commerce.checkout.generateToken(cart.id, { type: 'cart' })
         .then((token) => {
           setCheckoutToken(token)
         })
         .then(() => {
           fetchShippingCountries(checkoutToken.id)
         })
-        .catch((err) => console.error("There was an error generating a token", err)) 
+        .catch((err) => console.error("There was an error generating a token", err))
     }
   }
 
   useEffect(() => {
     genereateCheckoutToken()
-  },[])
+  }, [])
 
   useEffect(() => {
     fetchShippingCountries(checkoutToken.id, defaultState.shippingCountry)
-  },[])
+  }, [])
 
   const checkoutForm = () => {
     return (
       <form className="checkout__form">
-        <h4 className="checkout__subheading">Customer Information</h4>
+        <div>
+          <h4 className="checkout__subheading">Customer Information</h4>
 
-        <label className="checkout__label" htmlFor="firstName">First Name</label>
-        <input className="checkout__input" type="text" value={defaultState.firstName} name="firstName" placeholder="Insert your first name" required />
+          <label className="checkout__label" htmlFor="firstName">First Name</label>
+          <input className="checkout__input" type="text" value={defaultState.firstName} name="firstName" placeholder="Insert your first name" required />
 
-        <label className="checkout__label" htmlFor="lastName">Last Name</label>
-        <input className="checkout__input" type="text" value={defaultState.lastName} name="lastName" placeholder="Insert your last name" required />
+          <label className="checkout__label" htmlFor="lastName">Last Name</label>
+          <input className="checkout__input" type="text" value={defaultState.lastName} name="lastName" placeholder="Insert your last name" required />
 
-        <label className="checkout__label" htmlFor="email">Email</label>
-        <input className="checkout__input" type="email" value={defaultState.email} name="email" placeholder="Insert your email address" required />
+          <label className="checkout__label" htmlFor="email">Email</label>
+          <input className="checkout__input" type="email" value={defaultState.email} name="email" placeholder="Insert your email address" required />
+        </div>
 
-        <h4 className="checkout__subheading">Shipping Details</h4>
+        <div>
+          <h4 className="checkout__subheading">Shipping Details</h4>
 
-        <label className="checkout__label" htmlFor="fullName">Full Name</label>
-        <input className="checkout__input" type="text" value={defaultState.shippingName} name="fullName" placeholder="Insert your shipping full name" required />
+          <label className="checkout__label" htmlFor="fullName">Full Name</label>
+          <input className="checkout__input" type="text" value={defaultState.shippingName} name="fullName" placeholder="Insert your shipping full name" required />
 
-        <label className="checkout__label" htmlFor="streetAddress">Street Address</label>
-        <input className="checkout__input" type="text" value={defaultState.shippingStreet} name="shippingStreet" placeholder="Insert your shipping street address" required />
+          <label className="checkout__label" htmlFor="streetAddress">Street Address</label>
+          <input className="checkout__input" type="text" value={defaultState.shippingStreet} name="shippingStreet" placeholder="Insert your shipping street address" required />
 
-        <label className="checkout__label" htmlFor="shippingCity">City</label>
-        <input className="checkout__input" type="text" value={defaultState.shippingCity} name="shippingCity" placeholder="Insert your shipping City" required />
+          <label className="checkout__label" htmlFor="shippingCity">City</label>
+          <input className="checkout__input" type="text" value={defaultState.shippingCity} name="shippingCity" placeholder="Insert your shipping City" required />
 
-        <label className="checkout__label" htmlFor="shippingPostalZipCode">Postal/Zip Code</label>
-        <input className="checkout__input" type="text" value={defaultState.shippingPostalZipCode} name="shippingPostalZipCode" placeholder="Insert your shipping Postal/Zip Code" required />
+          <label className="checkout__label" htmlFor="shippingPostalZipCode">Postal/Zip Code</label>
+          <input className="checkout__input" type="text" value={defaultState.shippingPostalZipCode} name="shippingPostalZipCode" placeholder="Insert your shipping Postal/Zip Code" required />
+        </div>
 
-        <h4 className="checkouut__subheading">Payment Information</h4>
+        <div>
+          <h4 className="checkouut__subheading">Payment Information</h4>
 
-        <label className="checkout__label" htmlFor="cardNum">Credit Card Number</label>
-        <input className="checkout__input" type="text" value={defaultState.cardNum} name="cardNum" placeholder="Insert your Credit Card Number" required />
+          <label className="checkout__label" htmlFor="cardNum">Credit Card Number</label>
+          <input className="checkout__input" type="text" value={defaultState.cardNum} name="cardNum" placeholder="Insert your Credit Card Number" required />
 
-        <label className="checkout__label" htmlFor="expMonth">Expiry Month</label>
-        <input className="checkout__input" type="text" value={defaultState.expMonth} name="expMonth" placeholder="Credit Card Expiry Month" required />
+          <label className="checkout__label" htmlFor="expMonth">Expiry Month</label>
+          <input className="checkout__input" type="text" value={defaultState.expMonth} name="expMonth" placeholder="Credit Card Expiry Month" required />
 
-        <label className="checkout__label" htmlFor="expYear">Expiry Year</label>
-        <input className="checkout__input" type="text" value={defaultState.expYear} name="expYear" placeholder="Credit Card Expiry Year" required />
+          <label className="checkout__label" htmlFor="expYear">Expiry Year</label>
+          <input className="checkout__input" type="text" value={defaultState.expYear} name="expYear" placeholder="Credit Card Expiry Year" required />
 
-        <label className="checkout__label" htmlFor="ccv">CCV</label>
-        <input className="checkout__input" type="text" value={defaultState.ccv} name="ccv" placeholder="CCV (3 digits)" />
+          <label className="checkout__label" htmlFor="ccv">CCV</label>
+          <input className="checkout__input" type="text" value={defaultState.ccv} name="ccv" placeholder="CCV (3 digits)" />
 
-        <button className="checkout__btn-confirm">Confirm Order</button>
+          <button className="checkout__btn-confirm">Confirm Order</button>
+        </div>
 
       </form>
     )
   }
 
-    return (
-      <div>
-        {checkoutForm()}
-      </div>
-    )
+  return (
+    <div>
+      {checkoutForm()}
+    </div>
+  )
 }
 
 export default Checkout
