@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 function Hero() {
   return (
-    <div className="hero">
+    <div className="navbar">
       <Link to="/">
         <h1>E-CommerceJS</h1>
       </Link>

@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import { CartNav, ProductsList, Navbar } from "./components/";
+import Hero from "./components/Hero";
 import commerce from "./lib/commerce";
 import Checkout from "./pages/Checkout";
 import "./styles/scss/styles.scss";
@@ -84,6 +85,7 @@ function App() {
   return (
     <div className="app">
       <Navbar />
+      <Hero />
       <Routes>
         <Route
           path="/"
