@@ -1,70 +1,77 @@
 .products {
-    display: block;
-    margin: 2rem;
-  
-    @include md {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        margin: 10rem;
+  display: block;
+  margin: 2rem;
+  @include md {
+    display: grid;
+    gap: 1em;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin: 10rem;
+  }
+
+  .product {
+    &__card {
+      margin-top: 0;
     }
-  
-    .product {
-        &__card {
-            width: 25%;
-            margin: auto;
-            margin-top: 0;
-            margin-bottom: 0;
-            padding-bottom: 0.5rem;
-        }
-  
-        &__image {
-            border: 1px solid $text-primary;
-            width: 60%;
-        }
-    
-        &__name {
-            color: $text-primary;
-            padding-top: 0.5rem;
-            padding-bottom: 0.25rem;
-        }
-    
-        &__details {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 0.2rem;
-        }
-    
-        &__price {
-            align-self: center;
-            margin: 0.5rem 0;
-            color: $text-grey;
-        }
-    
-    
-        &__details {
-            display: flex;
-            justify-content: space-between;
-        }
-    
-        &__btn {
-            background: $color-accent;
-            color: white;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            padding: 0.5rem 1rem;
-            transition: all 0.4s ease-in-out;
-            margin-top: 1rem;
-            border: none;
-            border-radius: 2px;
-    
-            &:hover {
-                background-color: lighten(#EF4E42, 5);
-            }
-  
-            @include sm {
-                margin-top: 0;
-            }
-        }
+
+    &__image {
+      border: 1px solid;
+      border-top-color: $text-primary;
+      border-left-color: $text-primary;
+      border-right-color: $text-primary;
+      border-bottom-color: transparent;
+      width: 70%;
+    }
+
+    &__info {
+      width: 10em;
+      background-color: rgb(230, 230, 230);
+      padding: 1em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5em;
+    }
+
+    &__name {
+      color: $text-primary;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    &__description {
+      margin: 0;
+      text-align: center;
+    }
+
+    &__details {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__price {
+      color: $text-grey;
+      margin: 0;
+    }
+
+    &__btn {
+      background: $color-accent;
+      color: white;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      width: 10em;
+      padding: 0.5rem 1rem;
+      transition: all 0.4s ease-in-out;
+      border: none;
+      border-radius: 6px;
+      &:hover {
+        background-color: lighten(#ef4e42, 5);
+      }
+
+      @include sm {
+        margin-top: 0;
+      }
     }
   }
-  
+}

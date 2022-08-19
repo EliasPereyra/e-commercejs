@@ -1,4 +1,21 @@
 body {
   font-family: $font-primary;
   background-color: $bg-color;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  color: $text-primary;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
 }

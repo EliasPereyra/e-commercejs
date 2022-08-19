@@ -6,6 +6,14 @@ function Hero() {
       <Link to="/">
         <h1>E-CommerceJS</h1>
       </Link>
+      <ul>
+        <li>
+          About
+        </li>
+        <li>
+          Contact
+        </li>
+      </ul>
     </div>
   )
 }

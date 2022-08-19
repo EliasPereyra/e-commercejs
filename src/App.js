@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import { CartNav, ProductsList, Hero } from "./components/";
+import { CartNav, ProductsList, Navbar } from "./components/";
 import commerce from "./lib/commerce";
 import Checkout from "./pages/Checkout";
 import "./styles/scss/styles.scss";
@@ -83,7 +83,7 @@ function App() {
 
   return (
     <div className="app">
-      <Hero />
+      <Navbar />
       <Routes>
         <Route
           path="/"
