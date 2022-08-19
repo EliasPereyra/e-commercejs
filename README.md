@@ -1,6 +1,16 @@
-# A Basic E-commerce Project
+# eCommerce App
 
-This project was made with **React.js** and with the headless backend called [Commerce.js](https://commercejs.com/)
+## About the Project
+
+This is an e-commerce web application implementing the headless backend library called [Commerce.js](https://commercejs.com/).
+
+## Built with
+
+- ![React.js][react.js]
+- ![Sass][sass]
+
+[react.js]: https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white
+[sass]: https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white
 
 ## Available Scripts
 
