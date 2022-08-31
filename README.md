@@ -1,8 +1,7 @@
-# eCommerce App
-
-## About the Project
-
-This is an e-commerce web application implementing the headless backend library called [Commerce.js](https://commercejs.com/).
+<div align="center">
+  <h1><b>eCommerce App</b></h1>
+  <p>This is an e-commerce web application implementing the headless backend library called <a href="https://commercejs.com/">Commerce.js.</p>
+</div>
 
 ## Built with
 
