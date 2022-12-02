@@ -1,8 +1,7 @@
-# eCommerce App
-
-## About the Project
-
-This is an e-commerce web application implementing the headless backend library called [Commerce.js](https://commercejs.com/).
+<div align="center">
+  <h1><b>eCommerce App</b></h1>
+  <p>This is an e-commerce web application implementing the headless backend library called <a href="https://commercejs.com/">Commerce.js.</p>
+</div>
 
 ## Built with
 
@@ -20,7 +19,3 @@ In the project directory, you can run:
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
