@@ -6,10 +6,12 @@
 ## Built with
 
 - ![React.js][react.js]
+- ![TypeScript][typescript]
 - ![Sass][sass]
 
 [react.js]: https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=white
 [sass]: https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white
+[typescript]: https://img.shields.io/badge/TypeScript-3178C6?stryle=for-the-badge&logo=typescript&logoColor=white
 
 ## Available Scripts
 
